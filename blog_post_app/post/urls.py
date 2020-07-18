@@ -3,7 +3,6 @@ from .views import HomeView, DashboardView, CreatePostView
 
 urlpatterns = [
     path('', HomeView.as_view(), name = 'blog-home'),
-    path('accounts/', include('allauth.urls')),
     path('dashboard/', DashboardView.as_view(), name = 'user-dashboard'),
     path('create/', CreatePostView.as_view(success_url="/"), name = 'create_post'),
 

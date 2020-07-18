@@ -1,0 +1,19 @@
+
+### signup
+POST http://127.0.0.1:8000/rest-auth/registration/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "mitulp2311@gmail.com",
+    "password1": "*book123",
+    "password2": "*book123"
+}
+
+### login
+POST http://127.0.0.1:8000/rest-auth/login/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "mitulp2311@gmail.com",
+    "password": "*book123"
+}
