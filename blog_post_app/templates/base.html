@@ -1,3 +1,10 @@
+
+{% url 'user-dashboard' as dashboard %}
+{% url 'blog-home' as blog_home %}
+{% url 'account_login' as login %}
+{% url 'account_signup' as signup %}
+{% url 'account_logout' as logout %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +22,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">  
+    <link href="/static/css/custom.css" rel="stylesheet">  
 
 {% endblock css %}
 
@@ -32,24 +40,34 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          {% comment %} <li class="nav-item">
-            <a class="nav-link" href="#">Post Now</a>
-          </li> {% endcomment %}
-          <li class="nav-item">
+        <ul class="navbar-nav ml-auto"> 
+              <li class="nav-item">
+                <a class="nav-link {% if request.path == blog_home %} active {% endif %}" href="{% url 'blog-home' %}">Home</a>
+              </li>
             {% if user.is_anonymous %}
-              <a class="nav-link" href="/accounts/login">Log In</a>
+              <li class="nav-item">
+                <a class="nav-link {% if request.path == login %} active {% endif %}" href="{% url 'account_login' %}">Log In</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if request.path == signup %} active {% endif %}" href="{% url 'account_signup' %}">Sign Up</a>
+              </li>
             {% else %}
-              <a class="nav-link" href="/accounts/logout">Log Out</a>
+              
+              <li class="nav-item">
+                <a class="nav-link  {% if request.path == dashboard %} active {% endif %}" href="{% url 'user-dashboard' %}">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link  {% if request.path == logout %} active {% endif %}" href="{% url 'account_logout' %}">Log Out</a>
+              </li>
             {% endif %}
-          </li>
+          
         </ul>
       
       </div>
     </div>
   </nav>
 
-<div class="main_content">
+<div class="main_content" style="margin-bottom:100px;">
 
     <div class="container">
 
@@ -65,9 +83,9 @@
 </div>
 
 <!-- Footer -->
-  <footer class="py-5 bg-dark">
+  <footer class="py-5 bg-dark footer">
     <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+      <p class="m-0 text-center text-white">Copyright &copy; Micro Blog  2020</p>
     </div>
     <!-- /.container -->
   </footer>
